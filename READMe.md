@@ -54,8 +54,8 @@ no bugs yet displayed on the project
 - Bootstrap 4
 - Heroku
 - Postgresql
-<!-- Support and contact details
-Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
+## Support and contact details
+Contact me on cyntkayitare@gmail.com for any support want.
 
-License
-Copyright (c) Richard Waweru --> --> --> --> --> --> --> --> -->
+## License
+**[MIT](http://choosealicense.com/license/mit/)**  Copyright (c) 2019 **Cynthia Kayitare**
