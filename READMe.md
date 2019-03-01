@@ -36,16 +36,16 @@ export MAIL_PORT=587
 export MAIL_USE_TLS=1
 export MAIL_USERNAME=<your-email>
 export MAIL_PASSWORD=<your-password> 
-<!-- ## Run Database Migrations
+ ## Run Database Migrations
 python manage.py db init
 python manage.py db migrate -m "initial migration"
 python manage.py db upgrade
-Running the app in development
+<!-- ## Running the app in development
 In the same terminal type: python3 manage.py server
 
 Open the browser on http://localhost:5000/
 
-Known bugs
+<!-- Known bugs
 Sending batch emails bug If others are found, drop me a message
 
 Technologies used
@@ -59,4 +59,4 @@ Support and contact details
 Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
 License
-Copyright (c) Richard Waweru --> --> --> --> -->
+Copyright (c) Richard Waweru --> --> --> --> --> --> -->
