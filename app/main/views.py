@@ -1,7 +1,7 @@
 from flask import render_template,request,redirect,url_for,abort
 from . import main
-from .forms import ReviewForm,UpdateProfile,PitchForm,CommentForm
-from ..models import User,Pitche,Comment
+from .forms import ReviewForm,UpdateProfile,BlogForm,CommentForm,SubscriptionForm
+from ..models import User,BlogPost,Comment
 from flask_login import login_required,current_user
 from .. import db
 
@@ -11,10 +11,10 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    all_pitches =Pitche.query.all()
+    blog=BlogPost.query.all()
   
     title = 'Home'
-    return render_template('index.html', title = title,all_pitches=all_pitches)
+    return render_template('index.html', title = title,blog=blog)
 
 @main.route('/user/<uname>')
 def profile(uname):
@@ -45,38 +45,33 @@ def update_profile(uname):
     return render_template('profile/update.html',form =form)
 @main.route('/pitch/new', methods=['GET','POST'])
 @login_required
-def create_pitches():
-    form = PitchForm()
+def create_blogs():
+    form = BlogForm()
     if form.validate_on_submit():
-        category=form.category.data
-        content=form.content.data
-        new_pitch = Pitche(content=content,category=category, user=current_user)
-        new_pitch.save_pitch()
+        title=form.title.data
+        blog_post=form.blog_post.data
+        new_blog = BlogPost(name=name,blog_post=blog_post, user=current_user)
+        new_blog.save_blog()
 
         return redirect(url_for('main.index'))
 
-    return render_template('pitch.html',form = form)   
+    return render_template('blog.html',form = form)   
 
 @main.route('/comment/new/<int:id>', methods=['GET','POST'])
 @login_required
 def add_comments(id):
     form = CommentForm()
     if form.validate_on_submit():
+        name=form.name.data
         comment=form.comment.data
-        new_comment = Comment(comment=comment,pitches_id=id, user=current_user)
+        new_comment = Comment(comment=comment,blogposts_id=id, user=current_user)
         
         db.session.add(new_comment)
         db.session.commit()
 
         return redirect(url_for('main.index'))
-    comment=Comment.query.filter_by(pitches_id=id).all()
+    comment=Comment.query.filter_by(blogposts_id=id).all()
 
 
     return render_template('comment.html',comment=comment,form =form)   
-@main.route('/category/<cat>')
-def category(cat):
-    my_category = Pitch.get_category(cat)
 
-    title = f'{cat} category | One Minute Pitch'
-
-    return render_template('category.html', title=title, category=my_category)

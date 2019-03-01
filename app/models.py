@@ -1,7 +1,7 @@
-from . import db
+import os
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from . import login_manager
+from . import db, login_manager
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -15,7 +15,7 @@ class User(UserMixin, db.Model):
     # comment_id = db.Column(db.Integer,db.ForeignKey('comments.id'))
     bio = db.Column(db.String(255))
     profile_pic_path = db.Column(db.String())
-    pitches = db.relationship('Pitche',backref = 'user',lazy="dynamic")
+    blogposts = db.relationship('BlogPost',backref = 'user',lazy="dynamic")
     comments = db.relationship('Comment',backref = 'user',lazy="dynamic")
     pass_secure = db.Column(db.String(255))
     
@@ -34,38 +34,64 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-class Pitche(db.Model):
-    __tablename__= 'pitches' 
+class BlogPost(db.Model):
+    __tablename__= 'blogposts' 
     id = db.Column(db.Integer,primary_key = True)
-    content = db.Column(db.String(255))
-    category = db.Column(db.String(255))
+    title = db.column(db.String(255))
+    blog_post = db.Column(db.String(255))
+    # category = db.Column(db.String(255))
     users_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     comments = db.relationship('Comment',backref = 'pitche',lazy="dynamic")
   
-    def save_pitch(self):
+    def save_all_blog(self):
         db.session.add(self)
         db.session.commit()
     @classmethod
-    def get_pitches(cls, id):
-        pitche = Pitche.query.all()
-        return pitche
-    
+    def get_blog(cls, id):
+        blog_post = BlogPost.order_by('-id').all()
+        return blogposts
     @classmethod
-    def get_category(cls,cat):
-        category = Pitch.query.filter_by(category=cat).order_by('-id').all()
-        return category
+    def get_single_blog(cls,id):
+        blogposts = BlogPost.query.filter_by(id=id).first()
+        return blog_post
 
 class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key = True)
+    name = db.Column(db.String(255))
     comment = db.Column(db.String(255))
     users_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-    pitches_id = db.Column(db.Integer,db.ForeignKey('pitches.id'))
-    def __repr__(self):
-        return f'User {self.comment}'
+    blogposts_id = db.Column(db.Integer,db.ForeignKey('blogposts.id'))
+    def save_comment(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    @classmethod
+    def get_blog_comments(cls,id):
+        comments = Comment.query.filter_by(blog_id=id).order_by('-id').all()
+        return comments
+    
+    @classmethod
+    def get_single_comment(cls,id_blog,id):
+        comment = Comment.query.filter_by(blog_id=id_blog,id=id).first()
+        return comment
 
-@classmethod
-def get_pitches(cls):
-    pitches = Pitche.query.filter_by().all()
-    return pitches
+# @classmethod
+# def get_pitches(cls):
+#     pitches = Pitche.query.filter_by().all()
+#     return pitches
+class Subscription(db.Model):
+    __tablename__='subscriptions'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String())
+    subscription_data = db.Column(db.String(255))
+
+    def save_subscription(self):
+        db.session.add(self)
+        db.session.commit()
+    
+    @classmethod
+    def send_single_subscription(cls,id):
+        Subscription = Subscription.query.filter_by(id=id).first()
+        return Subscription

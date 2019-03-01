@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField,SubmitField,SelectField
+from wtforms import StringField,TextAreaField,SubmitField
 from wtforms.validators import Required
 
 class ReviewForm(FlaskForm):
@@ -16,13 +16,19 @@ class UpdateProfile(FlaskForm):
 #     password = PasswordField('Password',validators =[Required()])
 #     remember = BooleanField('Remember me')
 #     submit = SubmitField('Sign In')
-class PitchForm(FlaskForm):
+class BlogForm(FlaskForm):
     
     # my_category = StringField('Category', validators=[Required()])
-    category = SelectField('Category', choices=[('Business','Business'),('Academic','Academic'),('Political','Political'),('Technology','Technology'),('Health','Health')],validators=[Required()])
-    content= TextAreaField('Your Pitch', validators=[Required()])
-    submit = SubmitField('Submit!')
+    title = StringField('Title', validators=[Required()])
+    blog_post = TextAreaField('Type Blog here', validators=[Required()])
+    post = SubmitField('Post Blog')
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField('Comment', validators=[Required()])
-    submit = SubmitField('Post Comment')
+    name = StringField('Name',validators=[Required()])
+    # email = StringField('Email', validators=[Required()],render_kw={"placeholder": "Email"})
+    comment = TextAreaField('Enter Comment', validators=[Required()])
+    post = SubmitField('Post Comment')
+class SubscriptionForm(FlaskForm):
+    name = StringField('First Name', validators=[Required()])
+    subscription_data = StringField('Email', validators=[Required()])
+    subscribe = SubmitField('Subscribe')

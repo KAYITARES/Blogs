@@ -6,27 +6,18 @@
 
 {% block content %}
     <h1>WELCOME TO PITCHES WEBSITE</h><br>
-      <P>click on button to create a pitch <a href={{ url_for('main.create_pitches') }}><button>Create Pitch</button></a></P>
-      {% for kigali in all_pitches %}
-      <div class="container">         
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>Pitches</th>
-              <th>category</th>
-              <th>comments</th>
-              </tr>
-<tr>
-              <td>{{kigali.content}}</td>
+      <P>click on button to create a pitch <a href={{ url_for('main.create_blogs') }}><button>Create Pitch</button></a></P>
+      {% for kigali in blog %}
+      
+      <h4>{{kigali.title}}</h4>
+      <p>{{kigali.blog}}</p> 
               
-              <td>{{kigali.category}}</td>
               
-              <td><a href="/comment/new/{{kigali.id}}"><button>comment</button></a></td> 
-            </tr>
-          </thead>
-         
-        </table>
-      </div>
+            <div class="well">
+              <a href="/comment/new/{{kigali.id}}"><button>comment</button></a>
+            </div>
+              
+          
        
       {% endfor %}
 {% endblock%}
