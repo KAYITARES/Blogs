@@ -1,18 +1,17 @@
 ## Blog
-Blog is a web application where user can post the quote and see the blogs.
 March 1st, 2019
 By Kayitare cynthia
-<!-- Description
-Car-Blog is a web application blog meant for car enthusiasts who seek the latest news on super cars. Users can subscribe to the blog to get the latest updates on articles.
+## Description
+Blog is a web application where user can post the quote and see the blogs.and can subscribes to get the latest updates on post. Users can subscribe to the blog to get the latest updates on articles.The blog supports comments from readers and blog writers can determine whether to delete the comments or not. Users can also delete blog posts at their discretion.After the writer has posted a new blog post, subscribers will receive an email notification with a link to the blog post.
 
-The blog supports comments from readers and blog writers can determine whether to delete the comments or not. Users can also delete blog posts at their discretion.
+## Specifications
 
-After the writer has posted a new blog post, subscribers will receive an email notification with a link to the blog post.
+user can view blogs click on article and view the  whole blog post. and it display the whole blogs.
+user can write comments on the comment test area box.the name also is required.then the comment is displayed on the blog content.
+you fill subscription form that user can receive a subscription confirmation email.
 
-Specifications
-Get the specs here
-
-Set-up and Installation
+writer can add blog, delete and update blogs and delete comments
+<!-- Set-up and Installation
 Prerequiites
 - Python 3.6
 - Ubuntu software
@@ -62,4 +61,4 @@ Support and contact details
 Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
 License
-Copyright (c) Richard Waweru -->
+Copyright (c) Richard Waweru --> -->
