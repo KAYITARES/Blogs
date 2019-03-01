@@ -18,18 +18,16 @@ Prerequiites
 ## Clone the Repo
 Run the following command on the terminal: git clone https://github.com/KAYITARES/Blogs.git && cd ipblogs
 
-<!-- Install Postgres
-
-Create a Virtual Environment
+## Create a Virtual Environment
 Run the following commands in the same terminal:
 
 sudo apt-get install python3.6-venv
 python3.6 -m venv virtual
 source virtual/bin/activate
-Install dependancies
-Install dependancies that will create an environment for the app to run pip3 install -r requirements
+curl https://bootstrap.pypa.io/get-pip.py | python
+pip install flask
 
-Prepare environment variables
+<!-- ## Prepare environment variables
 export DATABASE_URL='postgresql+psycopg2://<your-username>:<your-password>@localhost/carblog'
 export SECRET_KEY='Your secret key'
 export DATABASE_URL_TEST='postgresql+psycopg2://<your-username>:<your-password>@localhost/carblog_test'
@@ -38,7 +36,7 @@ export MAIL_PORT=587
 export MAIL_USE_TLS=1
 export MAIL_USERNAME=<your-email>
 export MAIL_PASSWORD=<your-password> 
-Run Database Migrations
+<!-- ## Run Database Migrations
 python manage.py db init
 python manage.py db migrate -m "initial migration"
 python manage.py db upgrade
@@ -61,4 +59,4 @@ Support and contact details
 Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
 License
-Copyright (c) Richard Waweru --> --> -->
+Copyright (c) Richard Waweru --> --> --> --> -->
