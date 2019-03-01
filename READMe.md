@@ -1,5 +1,5 @@
 ## Blog
-Blog is a web application where .
+Blog is a web application where user can post the quote and see the blogs.
 March 1st, 2019
 By Kayitare cynthia
 <!-- Description
