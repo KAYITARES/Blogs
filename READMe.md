@@ -48,15 +48,14 @@ Open the browser on http://localhost:5000/
 ## Known bugs
 no bugs yet displayed on the project
 
-<!-- Technologies used
+## Technologies used
 - Python 3.6
 - HTML
 - Bootstrap 4
-- JavaScript
 - Heroku
 - Postgresql
-Support and contact details
+<!-- Support and contact details
 Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
 License
-Copyright (c) Richard Waweru --> --> --> --> --> --> --> -->
+Copyright (c) Richard Waweru --> --> --> --> --> --> --> --> -->
