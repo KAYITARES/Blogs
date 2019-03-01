@@ -27,7 +27,7 @@ source virtual/bin/activate
 curl https://bootstrap.pypa.io/get-pip.py | python
 pip install flask
 
-<!-- ## Prepare environment variables
+## Prepare environment variables
 export DATABASE_URL='postgresql+psycopg2://<your-username>:<your-password>@localhost/carblog'
 export SECRET_KEY='Your secret key'
 export DATABASE_URL_TEST='postgresql+psycopg2://<your-username>:<your-password>@localhost/carblog_test'
