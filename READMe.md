@@ -40,7 +40,7 @@ export MAIL_PASSWORD=<your-password>
 python manage.py db init
 python manage.py db migrate -m "initial migration"
 python manage.py db upgrade
-<!-- ## Running the app in development
+## Running the app in development
 In the same terminal type: python3 manage.py server
 
 Open the browser on http://localhost:5000/
