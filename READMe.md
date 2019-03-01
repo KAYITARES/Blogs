@@ -11,14 +11,14 @@ user can write comments on the comment test area box.the name also is required.t
 you fill subscription form that user can receive a subscription confirmation email.
 
 writer can add blog, delete and update blogs and delete comments
-<!-- Set-up and Installation
+## Set-up and Installation
 Prerequiites
 - Python 3.6
 - Ubuntu software
-Clone the Repo
-Run the following command on the terminal: git clone https://github.com/DevWaweru/Car-Blog.git && cd Car-Blog
+## Clone the Repo
+Run the following command on the terminal: git clone https://github.com/KAYITARES/Blogs.git && cd ipblogs
 
-Install Postgres
+<!-- Install Postgres
 
 Create a Virtual Environment
 Run the following commands in the same terminal:
@@ -61,4 +61,4 @@ Support and contact details
 Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
 License
-Copyright (c) Richard Waweru --> -->
+Copyright (c) Richard Waweru --> --> -->
