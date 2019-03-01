@@ -4,6 +4,7 @@ from .forms import ReviewForm,UpdateProfile,BlogForm,CommentForm,SubscriptionFor
 from ..models import User,BlogPost,Comment
 from flask_login import login_required,current_user
 from .. import db
+from ..request import get_quote
 
 @main.route('/')
 def index():
@@ -11,10 +12,11 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+    quote = get_quote()
     blog=BlogPost.query.all()
   
     title = 'Home'
-    return render_template('index.html', title = title,blog=blog)
+    return render_template('index.html', title = title,blog=blog,quote=quote)
 
 @main.route('/user/<uname>')
 def profile(uname):

@@ -1,8 +1,8 @@
 """initial  Migration
 
-Revision ID: bcb4972a20c0
+Revision ID: 203861241732
 Revises: 
-Create Date: 2019-03-01 13:22:13.525907
+Create Date: 2019-03-01 18:00:24.783972
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bcb4972a20c0'
+revision = '203861241732'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,10 +44,11 @@ def upgrade():
     )
     op.create_table('comments',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=255), nullable=True),
     sa.Column('comment', sa.String(length=255), nullable=True),
     sa.Column('users_id', sa.Integer(), nullable=True),
-    sa.Column('blogposts__id', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['blogposts__id'], ['blogposts.id'], ),
+    sa.Column('blogposts_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['blogposts_id'], ['blogposts.id'], ),
     sa.ForeignKeyConstraint(['users_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
