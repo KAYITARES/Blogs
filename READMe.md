@@ -45,10 +45,10 @@ In the same terminal type: python3 manage.py server
 
 Open the browser on http://localhost:5000/
 
-<!-- Known bugs
-Sending batch emails bug If others are found, drop me a message
+## Known bugs
+no bugs yet displayed on the project
 
-Technologies used
+<!-- Technologies used
 - Python 3.6
 - HTML
 - Bootstrap 4
@@ -59,4 +59,4 @@ Support and contact details
 Contact me on developer.waweru@gmail.com for any comments, reviews or advice.
 
 License
-Copyright (c) Richard Waweru --> --> --> --> --> --> -->
+Copyright (c) Richard Waweru --> --> --> --> --> --> --> -->
