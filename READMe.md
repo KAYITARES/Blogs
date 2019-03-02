@@ -37,9 +37,9 @@ pip install flask
 * export MAIL_USERNAME=<your-email>
 * export MAIL_PASSWORD=<your-password> 
  ## Run Database Migrations
-python manage.py db init
-python manage.py db migrate -m "initial migration"
-python manage.py db upgrade
+* python manage.py db init
+* python manage.py db migrate -m "initial migration"
+* python manage.py db upgrade
 ## Running the app in development
 In the same terminal type: python3 manage.py server
 

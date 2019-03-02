@@ -1,4 +1,10 @@
 Hello {{user.username}}
-Welcome to Watchlist
-We have just seen you have signed up for our application and want to welcome you to the family. 
-Please enjoy the reviews of all your  favourite films.
+Congratulations!
+
+You have subscribed to blog.!
+
+You will now receive updates on new blogs as soon as they are posted
+
+Sincerely,
+
+ Blog Team

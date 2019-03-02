@@ -1,10 +1,11 @@
-from flask import render_template,request,redirect,url_for,abort
+from flask import render_template,request,redirect,url_for,abort, flash
 from . import main
 from .forms import ReviewForm,UpdateProfile,BlogForm,CommentForm,SubscriptionForm
-from ..models import User,BlogPost,Comment
+from ..models import User,BlogPost,Comment,Subscription
 from flask_login import login_required,current_user
 from .. import db
 from ..request import get_quote
+
 
 @main.route('/')
 def index():
@@ -14,7 +15,7 @@ def index():
     '''
     quote = get_quote()
     blog=BlogPost.query.all()
-  
+    
     title = 'Home'
     return render_template('index.html', title = title,blog=blog,quote=quote)
 
@@ -45,15 +46,16 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
-@main.route('/pitch/new', methods=['GET','POST'])
+@main.route('/blog/new', methods=['GET','POST'])
 @login_required
 def create_blogs():
     form = BlogForm()
     if form.validate_on_submit():
         title=form.title.data
         blog_post=form.blog_post.data
-        new_blog = BlogPost(name=name,blog_post=blog_post, user=current_user)
-        new_blog.save_blog()
+        new_blog = BlogPost(title=title,blog_post=blog_post, user=current_user)
+        db.session.add(new_blog)
+        db.session.commit()
 
         return redirect(url_for('main.index'))
 
@@ -66,7 +68,7 @@ def add_comments(id):
     if form.validate_on_submit():
         name=form.name.data
         comment=form.comment.data
-        new_comment = Comment(comment=comment,blogposts_id=id, user=current_user)
+        new_comment = Comment(comment=comment,name=name,blogposts_id=id, user=current_user)
         
         db.session.add(new_comment)
         db.session.commit()
@@ -76,4 +78,20 @@ def add_comments(id):
 
 
     return render_template('comment.html',comment=comment,form =form)   
+@main.route('/sub/new/', methods = ['GET','POST'])
+def Subscription_view():
+    form = SubscriptionForm()
+    # print(form.name.data)
+    if form.validate_on_submit():
+        name = form.name.data
+        subscription_data = form.subscription_data.data
+        
 
+        new_subscription = Subscription(name=name,subscription_data=subscription_data)
+        db.session.add(new_subscription)
+        db.session.commit()
+
+        flash('subscription complete now we will receive an email of update')
+        return redirect(url_for('main.index'))
+
+    return render_template('subscription.html',user = current_user, form = form)

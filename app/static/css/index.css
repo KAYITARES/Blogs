@@ -6,7 +6,7 @@
   color: blueviolet;
 }
 body{
-  background-image:url(https://images.pexels.com/photos/1001780/pexels-photo-1001780.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500)
+  background-image:url(https://images.pexels.com/photos/34153/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500)
 }
 h1{
   text-align:center;
@@ -27,5 +27,12 @@ table{
 }
 .well{
   width:80%;
+  color:black;
   
+}
+#quote{
+  color:black;
+}
+#post{
+  background-color:rgb(98, 119, 129);
 }

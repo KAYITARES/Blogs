@@ -94,12 +94,12 @@ class Comment(db.Model):
 class Subscription(db.Model):
     __tablename__='subscriptions'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String())
+    name = db.Column(db.String(255))
     subscription_data = db.Column(db.String(255))
 
-    def save_subscription(self):
-        db.session.add(self)
-        db.session.commit()
+    # def save_subscription(self):
+    #     db.session.add(self)
+    #     db.session.commit()
     
     @classmethod
     def send_single_subscription(cls,id):
