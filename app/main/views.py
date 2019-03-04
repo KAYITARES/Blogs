@@ -1,6 +1,6 @@
 from flask import render_template,request,redirect,url_for,abort, flash
 from . import main
-from .forms import ReviewForm,UpdateProfile,BlogForm,CommentForm,SubscriptionForm
+from .forms import ReviewForm,UpdateProfile,BlogForm,CommentForm,SubscriptionForm,UpdatePostForm
 from ..models import User,BlogPost,Comment,Subscription
 from flask_login import login_required,current_user
 from .. import db
@@ -65,6 +65,25 @@ def create_blogs():
 
     return render_template('blog.html',form = form)   
 
+@main.route('/edit/blog/<int:id>',methods= ['GET','POST'])
+@login_required
+def update_post(id):
+   blog=BlogPost.query.filter_by(id=id).first()
+   if blog is None:
+        abort(404)
+
+   form=UpdatePostForm()
+   if form.validate_on_submit():
+        #  post.title=form.title.data
+        #  blog.title=form.title.data
+         blog.blog_post=form.blog_post.data
+
+         db.session.add(blog)
+         db.session.commit()
+
+         return redirect(url_for('main.index'))
+   return render_template('update_post.html',form=form)
+
 @main.route('/comment/new/<int:id>', methods=['GET','POST'])
 @login_required
 def add_comments(id):
@@ -100,3 +119,27 @@ def Subscription_view():
         return redirect(url_for('main.index'))
 
     return render_template('subscription.html',user = current_user, form = form)
+@main.route('/blog/<int:id>/<int:id_comment>/delete_comment')
+@login_required
+def delete_comment(id,id_comment):
+    comment = Comment.get_single_comment(id,id_comment)
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    flash('Comment has been deleted')
+
+    return redirect(url_for('main.add_comments',id=id))
+
+
+@main.route('/index/<int:id>/delete_blog')
+@login_required
+def delete_blog(id):
+    blog = BlogPost.get_single_blog(id)
+
+    db.session.delete(blog)
+    db.session.commit()
+
+    flash('Blog has been deleted') 
+
+    return redirect(url_for('main.index'))

@@ -16,8 +16,10 @@
   
     {% for com in comment %}
     <h3>{{com.comment}} @{{com.name}}</h3>
+    <button><a href="{{url_for('main.delete_comment',id=com.blogposts_id,id_comment=com.id)}}">delete</a></button>
     
       {% endfor%}
+      
    </div>
 </div>
 {% endblock%}

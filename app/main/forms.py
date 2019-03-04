@@ -32,3 +32,7 @@ class SubscriptionForm(FlaskForm):
     name = StringField('First Name', validators=[Required()])
     subscription_data = StringField('Email', validators=[Required()])
     subscribe = SubmitField('Subscribe')
+class UpdatePostForm(FlaskForm):
+    # title = StringField('Title', validators=[Required()])
+    blog_post = TextAreaField('Type Blog here', validators=[Required()])
+    submit=SubmitField('SUBMIT')

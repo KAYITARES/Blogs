@@ -58,11 +58,11 @@ class BlogPost(db.Model):
         db.session.commit()
     @classmethod
     def get_blog(cls, id):
-        blog_post = BlogPost.order_by('-id').all()
+        blogposts = BlogPost.order_by('-id').all()
         return blogposts
     @classmethod
     def get_single_blog(cls,id):
-        blogposts = BlogPost.query.filter_by(id=id).first()
+        blog_post = BlogPost.query.filter_by(id=id).first()
         return blog_post
 
 class Comment(db.Model):
@@ -84,7 +84,7 @@ class Comment(db.Model):
     
     @classmethod
     def get_single_comment(cls,id_blog,id):
-        comment = Comment.query.filter_by(blog_id=id_blog,id=id).first()
+        comment = Comment.query.filter_by(blogposts_id=id_blog,id=id).first()
         return comment
 
 # @classmethod
